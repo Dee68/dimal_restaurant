@@ -6,11 +6,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 class CustomUser(AbstractUser):
-    username = models.CharField(max_length=8,unique=True)
-    email = models.EmailField(_('email address'),unique=True)
-
-    # USERNAME_FIELD = email
-    # REQUIRED_FIELDS = ['username','email','password1','password2']
+    username = models.CharField(max_length=8, unique=True)
+    email = models.EmailField(_('email address'), unique=True)
 
     def __str__(self):
         return str(self.username)
