@@ -1,0 +1,132 @@
+{% extends 'base_auth.html' %}
+
+{% load static %}
+
+{% block title %}profile{% endblock%}
+
+{% block content %}
+
+<div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 mt-5">
+        <div class="card logout">
+            <div class="card-body">
+              <h3 class="card-title title-lead">{{ user_profile }} Info:</h3>
+              <hr>
+              {% include '_partials/messages.html' %}
+                
+             <div class="row md-5">
+              <div class="col-md-6">
+                <img src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}{% static 'images/userimage.png' %}{% endif %}" style="height:80px; width:80px; border-radius:50%;">
+              </div>
+             <br>
+              <div class="col-md-6">
+                <a href="{% url 'account:update-profile' %}" class="btn btn-outline-success btn-block cfm">Update Profile</a>
+              </div>
+             </div>
+             <br>
+               
+              
+              <div class="row mb-5 gx-5">
+                  <div class="row mb-3 ctr">
+                    <div class="col-md-3">
+                      <label class="form-label sp-teller">Name:</label>
+                    </div>
+                    <div class="col-md-9">
+                    <div class="form-control">
+                      {{ user.username }}
+                    </div>
+                    <br>
+                  </div>
+
+                  <div class="row mb-3 ctr">
+                    <div class="col-md-3">
+                      <label class="form-label sp-teller">Email:</label>
+                    </div>
+                    <div class="col-md-9">
+                    <div class="form-control">
+                      {{ user.email }}
+                    </div>
+                    <br>
+                  </div>
+                
+                  <div class="row mb-3 ctr">
+                    <div class="col-md-3">
+                      <label class="form-label sp-teller">FName:</label>
+                    </div>
+                    <div class="col-md-9">
+                    <div class="form-control">
+                      {{ user.first_name }}
+                    </div>
+                    <br>
+                    </div>
+                  </div>
+                <div class="row mb-3 ctr">
+                  <div class="col-md-3">
+                    <label class="form-label sp-teller">LName:</label>
+                  </div>
+                  <div class="col-md-9">
+                  <div class="form-control">
+                    {{ user.last_name }}
+                  </div>
+                  <br>
+                  </div>
+                </div>
+                <div class="row mb-3 ctr">
+                  <div class="col-md-3">
+                    <label class="form-label sp-teller">Address:</label>
+                  </div>
+                  <div class="col-md-9">
+                  <div class="form-control">
+                    {% if not user_profile.address %}Please supplier your address{% else %}{{ user_profile.address}}{% endif %}
+                  </div>
+                  <br>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                      <label class="form-label sp-teller" for="avatar">Upload:</label>
+                    </div>
+                    <div class="col-md-9">
+                    <input type="file" class="form-control" name="avatar">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <label for="" class="form-label sp-teller">Gender:</label>
+                  </div>
+                  <div class="col-md-9">
+                    <select class="form-select" aria-label="Default select example" name="gender">
+                      <option selected>{{ user_profile.gender }}</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <label class="form-label sp-teller" for="bio">Bio:</label>
+                  </div>
+                  <div class="col-md-9">
+                   <div class="form-control">
+                    {% if user_profile.bio == '' %}Write something about yourself...{% else %}{{user_profile.bio}}{% endif %}
+                   </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-9">
+                    <a href="{% url 'account:logout' %}" class="btn btn-outline-primary cfm">Logout</a>
+                  </div>
+                </div>
+              
+              </div>
+                     
+              
+            </div>
+          </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+{% endblock %}

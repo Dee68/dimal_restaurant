@@ -1,0 +1,112 @@
+{% extends 'base_auth.html' %}
+
+{% load static %}
+
+{% block title %}profile update{% endblock%}
+
+{% block content %}
+
+<div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 mt-5">
+        <div class="card logout">
+            <div class="card-body">
+              <h3 class="card-title title-lead">Update Profile:</h3>
+              <hr>
+              {% include '_partials/messages.html' %}
+                            
+              <div class="row mb-5 gx-5">
+                <form action="" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="row mb-3">
+                    <div class="col-md-3">
+                      <label class="form-label sp-teller">User Name:</label>
+                    </div>
+                    <div class="col-md-9">
+                    <input type="text" class="form-control" name="username" aria-label="User name" value="{{ user.username }}">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-3">
+                      <label class="form-label sp-teller">Email:</label>
+                    </div>
+                    <div class="col-md-9">
+                    <input type="email" class="form-control" name="email" aria-label="User email" value="{{ user.email }}">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-3">
+                      <label class="form-label sp-teller">First Name:</label>
+                    </div>
+                    <div class="col-md-9">
+                    <input type="text" class="form-control" name="first_name" aria-label="First name" value="{{ user_profile.user.first_name}}">
+                    </div>
+                  </div>
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <label class="form-label sp-teller">Last Name:</label>
+                  </div>
+                  <div class="col-md-9">
+                  <input type="text" class="form-control" name="last_name" aria-label="Last name" value="{{ user_profile.user.last_name}}">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <label class="form-label sp-teller">Address:</label>
+                  </div>
+                  <div class="col-md-9">
+                  <input type="text" class="form-control" name="address" aria-label="address" value="{{ user_profile.address}}">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                      <label class="form-label sp-teller" for="avatar">Avatar:</label>
+                    </div>
+                    <div class="col-md-9">
+                    <input type="file" class="form-control" name="avatar">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <label for="" class="form-label sp-teller" for="select gender">
+                      Gender
+                    </label>
+                  </div>
+                  <div class="col-md-9">
+                    <select class="form-select" aria-label="Default select gender" name="gender">
+                      <option selected>Male</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <label class="form-label sp-teller" for="bio">Bio:</label>
+                  </div>
+                  <div class="col-md-9">
+                    <textarea name="bio" id="bio" cols="30" rows="7" class="form-control">
+                      Write something about yourself...
+                    </textarea>
+                  </div>
+                </div>
+                <br>
+                <div class="row mb-3">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6 d-grid gap-4 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-outline-primary btn-block cfm">Update Profile</button>
+                    <a href="{% url 'account:logout' %}" class="btn btn-outline-primary btn-block cfm">Logout</a>
+                  </div>
+                  <div class="col-md-3"></div>
+                </div>
+                </form>
+              </div>
+                     
+              
+            </div>
+          </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+{% endblock %}

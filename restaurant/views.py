@@ -3,8 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 
 
-def restaurant_list(request):
-    return render(request, 'restaurant/restaurant_list.html')
+def restaurant(request):
+    return render(request, 'restaurant/index.html')
 
 
 def restaurant_detail(request, id, slug):

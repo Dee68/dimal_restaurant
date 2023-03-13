@@ -1,0 +1,26 @@
+{% extends 'base_auth.html' %}
+
+{% block title %}Confirm Logout{% endblock %}
+
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 mt-5">
+        <div class="card logout">
+            <div class="card-body">
+              <h2 class="card-title title-lead">Confirm Action</h1>
+              <form action="{% url 'account:confirmation' %}" method="POST" name="confirm" class="mt-5">
+                {% csrf_token %}
+                <h3>Are you sure you want to logout?</h3>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <input type="submit" value="Yes" name="yes" class="btn btn-outline-primary cfm">
+                  <input type="submit" value="No" name="no"  class="btn btn-outline-danger cfm">
+                </div>
+              </form>
+            </div>
+          </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}
