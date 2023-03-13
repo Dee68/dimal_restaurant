@@ -194,19 +194,3 @@ class ProfileTest(BaseTest):
         self.client.post(self.login_url, self.user_login)
         response = self.client.get(self.update_profile_url)
         self.assertTemplateUsed(response, 'account/update_profile.html')
-
-    # def test_user_avatar_absence(self):
-    #     self.client.post(self.register_url, self.user, format='text/html')
-    #     username = self.user['username']
-    #     password = self.user['password1']
-    #     self.user_login = {'username':username, 'password': password}
-    #     self.client.post(self.login_url, self.user_login)
-    #     self.user_profile = {
-    #         'user':self.user_login,
-    #         'gender': 'm',
-    #         'bio': 'something',
-    #         'address': '94 Iscov street',
-    #         'avatar': ''
-    #     }
-    #     self.client.post(self.u)
-        
