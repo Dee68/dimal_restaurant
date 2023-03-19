@@ -1,5 +1,5 @@
 from django import forms
-from .models import Reservation
+from .models import Reservation, Review
 
 
 class ReservationForm(forms.ModelForm):
@@ -21,3 +21,9 @@ class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
         fields = ['reserve_start', 'reserve_end']
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['content']

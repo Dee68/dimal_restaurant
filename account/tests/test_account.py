@@ -117,15 +117,6 @@ class RegisterTest(BaseTest):
         response = self.client.post(self.register_url, self.user_bad_name, format='text/html')
         self.assertEqual(response.status_code, 400)
 
-    # def test_validates_username(self):
-    #     response = self.client.post(self.register_url, self.user_with_non_alphanumeric, format='text/html')
-    #     storage = get_messages(response.wsgi_request)
-    #     errors = []
-    #     for msg in storage:
-    #         errors.append(msg.message)
-    #     self.assertIn('Only alpha numeric characters allowed.', errors)
-
-
 class LoginTest(BaseTest):
     def test_show_login_page(self):
         response = self.client.get(self.login_url)

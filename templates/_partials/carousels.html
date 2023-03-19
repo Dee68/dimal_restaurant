@@ -1,5 +1,5 @@
 {% load static %}
-<div id="carouselExampleIndicators" class="carousel slide">
+<div id="carouselExampleIndicators" class="carousel slide pageheader" data-interval="2000" data-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -8,12 +8,27 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="{% static 'images/table1.jpg' %}" class="d-block w-100" alt="decorated-round-table">
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+          <h2 class="text-primary font-weight-medium m-0">We are always at your service</h2>
+          <h1 class="display-1 text-white m-0">Dimal Restaurant</h1>
+          
+      </div>
       </div>
       <div class="carousel-item">
-        <img src="{% static 'images/luxury-dinner-table-hotel.jpg' %}" class="d-block w-100" alt="luxury-dinner-table-hotel">
+        <img src="{% static 'images/luxury-dinner-table-hotel.jpg' %}" class="d-block w-100" alt="luxury-dinner-table">
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+          <h2 class="text-primary font-weight-medium m-0">Serving you is our pleasure</h2>
+          <h1 class="display-1 text-white m-0">Dimal Restaurant</h1>
+          
+      </div>
       </div>
       <div class="carousel-item">
         <img src="{% static 'images/wedding-table-amazing-restaurant.jpg' %}" class="d-block w-100" alt="wedding-table-amazing-restaurant">
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+          <h2 class="text-primary font-weight-medium m-0">We guarantee to give you the best</h2>
+          <h1 class="display-1 text-white m-0">Dimal Restaurant</h1>
+          
+      </div>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

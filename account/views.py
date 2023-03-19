@@ -143,22 +143,24 @@ def profile_page(request):
     context = {'user_profile': user_profile, 'user': user}
     return render(request, 'account/profile_page.html', context)
 
+
 @login_required(login_url='account/signin')
 def profile_update(request):
     user_profile = Profile.objects.get(user_id=request.user.id)
-    post_data = request.POST or None
+    post_data = request.POST
     if request.method == 'POST':
-        user_form = CustomUserChangeForm(post_data, instance=request.user)
+        user_form = UserUpdateForm(post_data, instance=request.user)
         profile_form = UserProfileForm(post_data, request.FILES, instance=request.user.profile)
+        context = {'user_form': user_form, 'profile_form': profile_form, 'user_profile': user_profile}
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             messages.success(request, 'Your profile has been updated.')
-            return HttpResponseRedirect(reverse_lazy('account:profile'))       
+            return redirect('account:profile')      
         messages.error(request, 'Something went wrong.')
-        context={'user_form': user_form, 'profile_form': profile_form, 'user_profile': user_profile}
-        return render(request, 'account/update_profile.html', context )
-    user_form = CustomUserChangeForm(instance=request.user)
-    profile_form = UserProfileForm(instance=request.user.profile)
-    context = {'user_form': user_form, 'profile_form': profile_form, 'user_profile': user_profile}
-    return render(request, 'account/update_profile.html', context)
+        return render(request, 'account/update_profile.html', context, status=400)
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = UserProfileForm(post_data, request.FILES, instance=request.user.profile)
+        context = {'user_form': user_form, 'profile_form': profile_form, 'user_profile': user_profile}
+        return render(request, 'account/update_profile.html', context)

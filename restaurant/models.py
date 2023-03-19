@@ -50,4 +50,15 @@ class Reservation(models.Model):
         return self.reserve_end.strftime('%m/%d/%Y %I:%M %p')
 
     def __str__(self):
-        return f'{self.customer.username} reserved {self.table.title} on {self.reserved_on} '
+        return f'{self.customer.username} reserved {self.table.title}'
+
+
+class Review(models.Model):
+    table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name='table_review')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    content = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.author.username} reviewed {self.table.title}'
